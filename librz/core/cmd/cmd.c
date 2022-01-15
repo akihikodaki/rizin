@@ -6037,7 +6037,6 @@ RZ_API void rz_core_cmd_init(RzCore *core) {
 		{ "(", "macro", rz_cmd_macro },
 		{ "*", "pointer read/write", rz_cmd_pointer },
 		{ ".", "interpret", rz_cmd_interpret },
-		{ "/", "search kw, pattern aes", rz_cmd_search },
 		{ "R", "io pipe", rz_cmd_remote },
 		{ "?", "help message", rz_cmd_help },
 		{ "<", "pipe into RzCons.readChar", rz_cmd_pipein },
