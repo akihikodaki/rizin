@@ -370,7 +370,7 @@ static bool searchRange(RzCore *core, ut64 from, ut64 to, bool rad, struct ctxSe
 		return false;
 	}
 	RzSignSearch *ss = rz_sign_search_new();
-	ss->search->params.align = rz_config_get_i(core->config, "search.align");
+	ss->search->params->search_align = rz_config_get_i(core->config, "search.align");
 	rz_sign_search_init(core->analysis, ss, minsz, searchHitCB, ctx);
 
 	rz_cons_break_push(NULL, NULL);
@@ -510,7 +510,7 @@ static bool search(RzCore *core, bool rad, bool only_func) {
 
 		if (useBytes && only_func) {
 			ss = rz_sign_search_new();
-			ss->search->params.align = rz_config_get_i(core->config, "search.align");
+			ss->search->params->search_align = rz_config_get_i(core->config, "search.align");
 			int minsz = rz_config_get_i(core->config, "zign.minsz");
 			rz_sign_search_init(core->analysis, ss, minsz, searchHitCB, &bytes_search_ctx);
 		}

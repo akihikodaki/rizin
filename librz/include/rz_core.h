@@ -1147,6 +1147,8 @@ RZ_API bool rz_core_project_load_for_cli(RzCore *core, const char *file, bool lo
 
 RZ_API bool rz_arch_platform_add_flags_comments(RzCore *core);
 
+RZ_API RzSearchParams *rz_core_search_params_new(RzCore *core, RzSearchMode mode);
+
 #endif
 
 #ifdef __cplusplus

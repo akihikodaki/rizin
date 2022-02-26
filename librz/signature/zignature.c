@@ -2248,7 +2248,7 @@ RZ_API bool rz_sign_foreach(RzAnalysis *a, RzSignForeachCallback cb, void *user)
 RZ_API RzSignSearch *rz_sign_search_new(void) {
 	RzSignSearch *ret = RZ_NEW0(RzSignSearch);
 	if (ret) {
-		ret->search = rz_search_new(RZ_SEARCH_KEYWORD);
+		ret->search = rz_search_new(rz_search_params_new(RZ_SEARCH_KEYWORD));
 		ret->items = rz_list_newf((RzListFree)rz_sign_item_free);
 	}
 	return ret;
