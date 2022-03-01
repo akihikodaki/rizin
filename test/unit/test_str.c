@@ -674,6 +674,22 @@ bool test_rz_str_ndup(void) {
 	mu_end;
 }
 
+bool test_rz_str_extract_printable(void) {
+	char *non_printable = "ab\x13"
+			      "37"
+			      "\x89"
+			      "37837";
+	char *printable = "abcdabcd";
+	mu_assert_streq_free(rz_str_extract_printable(non_printable, 3), "ab3", "low length fails");
+	mu_assert_streq_free(rz_str_extract_printable(non_printable, 9), "ab3737837", "exact length fails");
+	mu_assert_streq_free(rz_str_extract_printable(non_printable, 12), "ab3737837", "extra length fails");
+	mu_assert_streq_free(rz_str_extract_printable(non_printable, 2), "ab", "no non-printable length fails");
+	mu_assert_streq_free(rz_str_extract_printable(printable, 4), "abcd", "printable low length fails");
+	mu_assert_streq_free(rz_str_extract_printable(printable, 8), "abcdabcd", "printable exact length fails");
+	mu_assert_streq_free(rz_str_extract_printable(printable, 12), "abcdabcd", "printable extra length fails");
+	mu_end;
+}
+
 bool all_tests() {
 	mu_run_test(test_rz_str_newf);
 	mu_run_test(test_rz_str_replace_char_once);
@@ -712,6 +728,7 @@ bool all_tests() {
 	mu_run_test(test_rz_strf);
 	mu_run_test(test_rz_str_nlen);
 	mu_run_test(test_rz_str_ndup);
+	mu_run_test(test_rz_str_extract_printable);
 	return tests_passed != tests_run;
 }
 
