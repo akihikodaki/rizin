@@ -120,14 +120,6 @@ RZ_API int rz_search_kw_add(RzSearch *s, RzSearchKeyword *kw);
 RZ_API void rz_search_reset(RzSearch *s, int mode);
 RZ_API void rz_search_kw_reset(RzSearch *s);
 RZ_API void rz_search_string_prepare_backward(RzSearch *s);
-RZ_API void rz_search_kw_reset(RzSearch *s);
-
-RZ_API int rz_search_range_add(RzSearch *s, ut64 from, ut64 to);
-RZ_API int rz_search_range_set(RzSearch *s, ut64 from, ut64 to);
-RZ_API int rz_search_range_reset(RzSearch *s);
-RZ_API int rz_search_set_blocksize(RzSearch *s, ut32 bsize);
-
-RZ_API int rz_search_bmh(const RzSearchKeyword *kw, const ut64 from, const ut8 *buf, const int len, ut64 *out);
 
 // TODO: is this an internal API?
 RZ_API int rz_search_mybinparse_update(RzSearch *s, ut64 from, const ut8 *buf, int len);
